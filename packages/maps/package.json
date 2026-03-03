@@ -1,0 +1,30 @@
+{
+  "name": "@heliconhq/maps",
+  "version": "14.0.14",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"No test specified\"",
+    "build": "babel --root-mode upward --out-dir dist src --extensions '.js,.jsx,.ts,.tsx'",
+    "dev": "babel --root-mode upward src --source-maps --out-dir dist src --extensions '.js,.jsx,.ts,.tsx' --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heliconhq/fabric.git",
+    "directory": "packages/maps"
+  },
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "@heliconhq/core": "14.0.14",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@turf/bbox": "^6.5.0",
+    "@types/mapbox-gl": "^2.7.11",
+    "core-js": "^3.6.4",
+    "mapbox-gl": "^2.15.0",
+    "react-map-gl": "^7.0.25"
+  }
+}

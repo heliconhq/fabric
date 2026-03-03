@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "target": "es2015",
+    "jsx": "react-jsx",
+    "types": [
+      "react",
+      "jest"
+    ],
+    "jsxImportSource": "@emotion/react",
+    "module": "esNext",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "declaration": true,
+    "removeComments": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": false,
+    "strict": true,
+    "outDir": "dist",
+    "baseUrl": "src",
+    "lib": [
+      "dom",
+      "es2019"
+    ],
+    "typeRoots": [
+      "./src/types",
+      "node_modules/@types"
+    ],
+    "strictNullChecks": true,
+    "allowJs": true
+  },
+  "exclude": [
+    "dist",
+    "node_modules",
+    "example",
+    "docs",
+    "scripts",
+    "packages/rjsf",
+    ".eslintrc.js"
+  ]
+}

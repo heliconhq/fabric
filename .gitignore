@@ -1,0 +1,6 @@
+.DS_Store
+.npmrc
+dist
+node_modules
+coverage
+.vscode/*.log

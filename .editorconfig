@@ -1,0 +1,5 @@
+root = true
+
+[*.{jsx,js,json,yml,jsx,mdx,css,ts,tsx}]
+indent_style = space
+indent_size = 2

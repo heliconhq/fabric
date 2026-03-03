@@ -1,0 +1,5 @@
+const ViewCarousel = ({ color = 'currentColor' }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={color}><path d="M7 19h10V4H7v15zm-5-2h4V6H2v11zM18 6v11h4V6h-4z"/></svg>
+);
+
+export default ViewCarousel;

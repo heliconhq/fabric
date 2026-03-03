@@ -1,0 +1,35 @@
+{
+  "name": "@heliconhq/dates",
+  "version": "14.0.14",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"No test specified\"",
+    "build:js": "babel --root-mode upward --out-dir dist src --extensions '.js,.jsx,.ts,.tsx'",
+    "dev": "babel --root-mode upward src --source-maps --out-dir dist src --extensions '.js,.jsx,.ts,.tsx' --watch",
+    "build:types": "tsc --emitDeclarationOnly",
+    "clean": "npx rimraf dist",
+    "build": "npm run clean && npm run build:types && npm run build:js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heliconhq/fabric.git",
+    "directory": "packages/dates"
+  },
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "@heliconhq/core": "14.0.14",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "date-fns": "*",
+    "core-js": "^3.6.4",
+    "react-datepicker": "7.5.0",
+    "@emotion/react": "*"
+  },
+  "devDependencies": {
+    "@types/react": "*"
+  }
+}

@@ -1,0 +1,105 @@
+import React, { useCallback } from 'react';
+
+import { Input } from '@heliconhq/core';
+
+import {
+  ariaDescribedByIds,
+  examplesId,
+  getInputProps,
+  FormContextType,
+  RJSFSchema,
+  StrictRJSFSchema,
+  WidgetProps,
+} from '@rjsf/utils';
+
+function BaseInputTemplate<
+  T = any,
+  S extends StrictRJSFSchema = RJSFSchema,
+  F extends FormContextType = any
+>(props: WidgetProps<T, S, F>) {
+  const {
+    id,
+    value,
+    readonly,
+    disabled,
+    autofocus,
+    onBlur,
+    onFocus,
+    onChange,
+    options,
+    schema,
+    uiSchema,
+    formContext,
+    registry,
+    rawErrors,
+    type,
+    ...rest
+  } = props;
+
+  // Note: since React 15.2.0 we can't forward unknown element attributes, so we
+  // exclude the "options" and "schema" ones here.
+  if (!id) {
+    console.log("No id for", props);
+    throw new Error(`no id for props ${JSON.stringify(props)}`);
+  }
+  const inputProps = {
+    ...rest,
+    ...getInputProps<T, S, F>(schema, type, options),
+  };
+
+  let inputValue;
+  if (inputProps.type === 'number' || inputProps.type === 'integer') {
+    inputValue = value || value === 0 ? value : '';
+  } else {
+    inputValue = value == null ? '' : value;
+  }
+
+  const _onChange = useCallback(
+    ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) =>
+      onChange(value === '' ? options.emptyValue : value),
+    [onChange, options],
+  );
+  const _onBlur = useCallback(
+    ({ target: { value } }: React.FocusEvent<HTMLInputElement>) => onBlur(id, value),
+    [onBlur, id],
+  );
+  const _onFocus = useCallback(
+    ({ target: { value } }: React.FocusEvent<HTMLInputElement>) => onFocus(id, value),
+    [onFocus, id],
+  );
+
+  return (
+    <>
+      <Input
+        id={id}
+        name={id}
+        className="form-control"
+        readOnly={readonly}
+        disabled={disabled}
+        autoFocus={autofocus}
+        value={inputValue}
+        {...inputProps}
+        list={schema.examples ? examplesId<T>(id) : undefined}
+        onChange={_onChange}
+        onBlur={_onBlur}
+        onFocus={_onFocus}
+        aria-describedby={ariaDescribedByIds<T>(id, !!schema.examples)}
+      />
+      {Array.isArray(schema.examples) && (
+        <datalist key={`datalist_${id}`} id={examplesId<T>(id)}>
+          {(schema.examples as string[])
+            .concat(
+              schema.default && !schema.examples.includes(schema.default)
+                ? ([schema.default] as string[])
+                : []
+            )
+            .map((example: any) => {
+              return <option key={example} value={example} />;
+            })}
+        </datalist>
+      )}
+    </>
+  );
+}
+
+export default BaseInputTemplate;

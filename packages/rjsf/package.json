@@ -1,0 +1,30 @@
+{
+  "name": "@heliconhq/rjsf",
+  "version": "14.0.14",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"No test specified\"",
+    "build": "babel --root-mode upward --out-dir dist src --extensions '.js,.jsx,.ts,.tsx'",
+    "dev": "babel --root-mode upward src --source-maps --out-dir dist src --extensions '.js,.jsx,.ts,.tsx' --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heliconhq/fabric.git",
+    "directory": "packages/rjsf"
+  },
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "@heliconhq/core": "14.0.14",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@rjsf/core": "^5.0.0-beta.20",
+    "@rjsf/utils": "^5.0.0-beta.20",
+    "@rjsf/validator-ajv8": "^5.0.0-beta.20",
+    "core-js": "^3.6.4",
+    "prop-types": "^15.7.2"
+  }
+}

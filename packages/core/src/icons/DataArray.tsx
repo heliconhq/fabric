@@ -1,0 +1,5 @@
+const DataArray = ({ color = 'currentColor' }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={color}><path d="M15 20v-2h3V6h-3V4h5v16ZM4 20V4h5v2H6v12h3v2Z"/></svg>
+);
+
+export default DataArray;
